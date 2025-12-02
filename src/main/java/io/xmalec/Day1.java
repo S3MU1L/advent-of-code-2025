@@ -1,14 +1,15 @@
 package io.xmalec;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.InputStreamReader;
 import java.util.List;
 
 public class Day1 {
     public static void main(String[] args) {
         List<String> rotations;
-        try (var reader = Files.newBufferedReader(Path.of("main/resources/day1.txt"))) {
+        try (var reader = new BufferedReader(new InputStreamReader(Day1.class.getResourceAsStream("/day1.txt")))) {
+
             rotations = reader.lines()
                     .map(String::trim)
                     .filter(s -> !s.isEmpty())
