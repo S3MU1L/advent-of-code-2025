@@ -19,7 +19,6 @@ public class Day2 {
                 long second = Long.parseLong(parts.get(1));
                 for (long i = first; i <= second; i++) {
                     if (invalid2(i)) {
-                        System.out.println("invalid: " + i);
                         result += i;
                     }
                 }
