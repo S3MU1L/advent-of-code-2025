@@ -19,7 +19,7 @@ public class Day4 {
             }
 
             int h = gridStrings.size();
-            int w = gridStrings.get(0).length();
+            int w = gridStrings.getFirst().length();
 
             char[][] grid = new char[h][w];
             for (int i = 0; i < h; i++) {
@@ -30,24 +30,14 @@ public class Day4 {
             var current = getForks(grid);
             while (!current.isEmpty()) {
                 sum += current.size();
-                clearGrid(grid, current);
+                current.forEach(pair -> {
+                    grid[pair.left()][pair.right()] = '.';
+                });
                 current = getForks(grid);
             }
             System.out.println("Sum: " + sum);
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    private static void clearGrid(char[][] grid, List<Pair<Integer, Integer>> current) {
-        int h = grid.length;
-        int w = grid[0].length;
-        for (var pair : current) {
-            int row = pair.left();
-            int col = pair.right();
-            if (row >= 0 && row < h && col >= 0 && col < w) {
-                grid[row][col] = '.';
-            }
         }
     }
 
